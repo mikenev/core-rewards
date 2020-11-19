@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.COnfiguration.CommandLine" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.COnfiguration.EnvironmentVariables" Version="3.1.7" />
     <PackageReference Include="Microsoft.Extensions.COnfiguration.Json" Version="3.1.7" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="85.0.4183.8700" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="87.0.4280.2000" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
