@@ -351,3 +351,5 @@ MigrationBackup/
 
 profiles/
 .vscode
+appsettings.Development.json
+

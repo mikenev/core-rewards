@@ -21,22 +21,25 @@ namespace Rewards
             var mobileAgent = Configuration.GetSection("MobileAgentString").Get<string>();
             var desktopAgent = Configuration.GetSection("DesktopAgentString").Get<string>();
 
-            var profileDirectories = Configuration.GetSection("ProfileDirectories").Get<string[]>();
+            var profileDir = Configuration.GetSection("ProfileDirectory").Get<string>();
+            var profiles = Configuration.GetSection("Profiles").Get<string[]>();
 
             var desktopCount = Configuration.GetSection("NumberDesktopSearches").Get<int>();
             var mobileCount = Configuration.GetSection("NumberMobileSearches").Get<int>();
 
-            foreach (var profileDir in profileDirectories)
+            foreach (var profile in profiles)
             {
                 ChromeOptions options = new ChromeOptions();
-                options.AddArgument("--headless");
+                //options.AddArgument("--headless");
                 options.AddArgument($"user-data-dir={profileDir}");
+                options.AddArgument($"profile-directory={profile}");
                 options.AddArgument($"--user-agent={mobileAgent}");
                 RunSearches(options, GetSearchTerms(mobileCount));
 
                 options = new ChromeOptions();
-                options.AddArgument("--headless");
+                //options.AddArgument("--headless");
                 options.AddArgument($"user-data-dir={profileDir}");
+                options.AddArgument($"profile-directory={profile}");
                 options.AddArgument($"--user-agent={desktopAgent}");
                 RunSearches(options, GetSearchTerms(desktopCount));
             }
