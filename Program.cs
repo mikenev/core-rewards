@@ -12,8 +12,10 @@ namespace Rewards
 
         static void Main(string[] args)
         {
+            var env = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             IConfiguration Configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env}.json", true)
                 .AddEnvironmentVariables()
                 .AddCommandLine(args)
                 .Build();
