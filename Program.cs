@@ -31,17 +31,18 @@ namespace Rewards
 
             foreach (var profile in profiles)
             {
+                Console.WriteLine(profile);
+
                 ChromeOptions options = new ChromeOptions();
-                //options.AddArgument("--headless");
-                options.AddArgument($"user-data-dir={profileDir}");
-                options.AddArgument($"profile-directory={profile}");
+                options.AddArgument("--headless");
+                options.AddArgument("--remote-debugging-port=9222");
+                options.AddArgument($"user-data-dir={profileDir}/{profile}");
                 options.AddArgument($"--user-agent={mobileAgent}");
                 RunSearches(options, GetSearchTerms(mobileCount));
 
                 options = new ChromeOptions();
-                //options.AddArgument("--headless");
-                options.AddArgument($"user-data-dir={profileDir}");
-                options.AddArgument($"profile-directory={profile}");
+                options.AddArgument("--headless");
+                options.AddArgument($"user-data-dir={profileDir}/{profile}");
                 options.AddArgument($"--user-agent={desktopAgent}");
                 RunSearches(options, GetSearchTerms(desktopCount));
             }
